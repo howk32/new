@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анна и Иван - Свадебное приглашение</title>
+    <style>
+        :root {
+            --primary-color: #000;
+            --background-color: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .names {
+            font-size: 4rem;
+            font-weight: 200;
+            margin-bottom: 1rem;
+        }
+
+        .date {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .couple {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .person {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid var(--primary-color);
+        }
+
+        .person h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .story {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .details {
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        .timeline {
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .names {
+                font-size: 2.5rem;
+            }
+
+            .date {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="names">Анна & Иван</h1>
+        <p class="date">21 апреля 2025</p>
+    </header>
+
+    <section class="couple">
+        <div class="person">
+            <h3>Анна</h3>
+            <p>"Где любовь и совет, там и Божья благодать"</p>
+            <div class="details">
+                <p>27 лет</p>
+                <p>Флорист, владелица цветочной мастерской "Букет Анны"</p>
+                <p>Романтичная, заботливая, с тонким чувством прекрасного</p>
+            </div>
+        </div>
+
+        <div class="person">
+            <h3>Иван</h3>
+            <p>"Счастье — это когда тебя понимают"</p>
+            <div class="details">
+                <p>29 лет</p>
+                <p>Архитектор, специалист по реставрации старинных зданий</p>
+                <p>Спокойный, надежный, с отличным чувством юмора</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story">
+        <h2>Наша История</h2>
+        <div class="timeline">
+            <p>Наша история началась в дождливый апрельский день. Аня заказывала кофе в маленькой кофейне, где Иван как раз рисовал эскиз фасада за соседним столиком. Он случайно задел её зонтик, она пролила ему кофе на чертеж...</p>
+            <p>Через год, во время путешествия по Тоскане, Иван предложил Ане руку и сердце на рассвете, среди оливковых рощ. Она, конечно, сказала "да"!</p>
+        </div>
+    </section>
+
+    <section class="details">
+        <h2>Детали Торжества</h2>
+        <p>Мы будем рады видеть вас на нашем празднике</p>
+        <div class="event-details">
+            <p><strong>Дата:</strong> 21 апреля 2025</p>
+            <p><strong>Время:</strong> 15:00</p>
+            <p><strong>Место:</strong> Будет объявлено позже</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
