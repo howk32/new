@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анна и Иван - Свадебное приглашение</title>
+    <title>Анна & Иван | Свадьба 15.08.2024</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Основные стили */
         :root {
-            --primary-color: #000;
-            --background-color: #fff;
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+            --dark-gray: #333333;
+            --light-gray: #e0e0e0;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -17,158 +23,560 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--background-color);
-            color: var(--primary-color);
+            font-family: 'Raleway', sans-serif;
+            color: var(--black);
+            background-color: var(--white);
             line-height: 1.6;
         }
 
-        .header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
-            text-align: center;
-            padding: 2rem;
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
         }
 
-        .names {
-            font-size: 4rem;
-            font-weight: 200;
-            margin-bottom: 1rem;
-        }
-
-        .date {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            letter-spacing: 3px;
-        }
-
-        section {
-            padding: 5rem 2rem;
+        .container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .couple {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem;
-            margin-top: 2rem;
+        section {
+            padding: 80px 20px;
         }
 
-        .person {
+        /* Обложка */
+        .cover {
+            height: 100vh;
+            background: url('https://source.unsplash.com/random/1920x1080/?wedding,couple') center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 2rem;
-            border: 1px solid var(--primary-color);
+            filter: grayscale(100%);
         }
 
-        .person h3 {
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        .cover h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .cover h1 span {
+            font-size: 4rem;
+            margin: 0 10px;
+        }
+
+        .cover .date {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 2rem;
-            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
         }
 
-        .story {
-            max-width: 800px;
-            margin: 0 auto;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+
+        /* Приглашение */
+        .invitation {
             text-align: center;
-            padding: 2rem;
+            background-color: var(--gray);
+        }
+
+        .invitation h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .invitation p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
 
         .details {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .details i {
+            font-size: 1.2rem;
+        }
+
+        /* Галерея */
+        .gallery {
+            background-color: var(--white);
+        }
+
+        .gallery h2 {
             text-align: center;
-            background-color: var(--primary-color);
-            color: var(--background-color);
+            margin-bottom: 50px;
+            font-size: 2.5rem;
         }
 
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 200px;
+            gap: 15px;
+        }
+
+        .photo-item {
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+
+        .photo-item:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+
+        .tall {
+            grid-row: span 2;
+        }
+
+        .wide {
+            grid-column: span 2;
+        }
+
+        /* Наша история */
+        .our-story {
+            background-color: var(--gray);
+            text-align: center;
+        }
+
+        .our-story h2 {
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .bride, .groom, .how-we-met {
+            text-align: left;
+        }
+
+        .bride h3, .groom h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .how-we-met h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .how-we-met p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Таймлайн */
         .timeline {
-            margin: 4rem 0;
-            position: relative;
+            background-color: var(--white);
         }
 
-        .timeline::before {
+        .timeline h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-container::before {
             content: '';
             position: absolute;
-            left: 50%;
+            width: 2px;
+            background-color: var(--black);
             top: 0;
             bottom: 0;
-            width: 1px;
-            background: var(--primary-color);
+            left: 50%;
+            margin-left: -1px;
         }
 
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--white);
+            border: 3px solid var(--black);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--gray);
+            position: relative;
+            border-radius: 6px;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Контакты */
+        .contacts {
+            background-color: var(--gray);
+            text-align: center;
+        }
+
+        .contacts h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        .contacts p {
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        /* Карта */
+        .map {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .map h2 {
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .map-container {
+            height: 450px;
+            width: 100%;
+        }
+
+        /* Адаптивность */
         @media (max-width: 768px) {
-            .names {
+            .cover h1 {
+                font-size: 3rem;
+            }
+            
+            .cover h1 span {
                 font-size: 2.5rem;
             }
-
-            .date {
-                font-size: 1.2rem;
+            
+            .photo-grid {
+                grid-template-columns: 1fr;
             }
-
-            section {
-                padding: 3rem 1rem;
+            
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-container::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                gap: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1 class="names">Анна & Иван</h1>
-        <p class="date">21 апреля 2025</p>
-    </header>
-
-    <section class="couple">
-        <div class="person">
-            <h3>Анна</h3>
-            <p>"Где любовь и совет, там и Божья благодать"</p>
-            <div class="details">
-                <p>27 лет</p>
-                <p>Флорист, владелица цветочной мастерской "Букет Анны"</p>
-                <p>Романтичная, заботливая, с тонким чувством прекрасного</p>
+    <div class="container">
+        <!-- Обложка -->
+        <section class="cover">
+            <div class="cover-content">
+                <h1>Анна <span>&</span> Иван</h1>
+                <p class="date">15 августа 2024</p>
+                <div class="scroll-down">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="person">
-            <h3>Иван</h3>
-            <p>"Счастье — это когда тебя понимают"</p>
+        <!-- Приглашение -->
+        <section class="invitation">
+            <h2>Дорогие друзья и родные!</h2>
+            <p>Мы рады пригласить вас разделить с нами радость нашего свадебного дня</p>
             <div class="details">
-                <p>29 лет</p>
-                <p>Архитектор, специалист по реставрации старинных зданий</p>
-                <p>Спокойный, надежный, с отличным чувством юмора</p>
+                <p><i class="far fa-calendar-alt"></i> 15 августа 2024 года в 16:00</p>
+                <p><i class="fas fa-map-marker-alt"></i> Ресторан "Лазурный", г. Москва</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="story">
-        <h2>Наша История</h2>
-        <div class="timeline">
-            <p>Наша история началась в дождливый апрельский день. Аня заказывала кофе в маленькой кофейне, где Иван как раз рисовал эскиз фасада за соседним столиком. Он случайно задел её зонтик, она пролила ему кофе на чертеж...</p>
-            <p>Через год, во время путешествия по Тоскане, Иван предложил Ане руку и сердце на рассвете, среди оливковых рощ. Она, конечно, сказала "да"!</p>
-        </div>
-    </section>
+        <!-- Галерея -->
+        <section class="gallery">
+            <h2>Наши моменты</h2>
+            <div class="photo-grid">
+                <div class="photo-item tall" style="background-image: url('https://source.unsplash.com/random/300x600/?couple')"></div>
+                <div class="photo-item" style="background-image: url('https://source.unsplash.com/random/600x400/?wedding')"></div>
+                <div class="photo-item" style="background-image: url('https://source.unsplash.com/random/600x400/?ring')"></div>
+                <div class="photo-item wide" style="background-image: url('https://source.unsplash.com/random/800x400/?proposal')"></div>
+                <div class="photo-item" style="background-image: url('https://source.unsplash.com/random/400x600/?bride')"></div>
+                <div class="photo-item" style="background-image: url('https://source.unsplash.com/random/400x600/?groom')"></div>
+            </div>
+        </section>
 
-    <section class="details">
-        <h2>Детали Торжества</h2>
-        <p>Мы будем рады видеть вас на нашем празднике</p>
-        <div class="event-details">
-            <p><strong>Дата:</strong> 21 апреля 2025</p>
-            <p><strong>Время:</strong> 15:00</p>
-            <p><strong>Место:</strong> Будет объявлено позже</p>
-        </div>
-    </section>
+        <!-- Наша история -->
+        <section class="our-story">
+            <h2>Наша история</h2>
+            <div class="story-content">
+                <div class="bride">
+                    <h3>Анна</h3>
+                    <p class="quote">"Где любовь и совет, там и Божья благодать"</p>
+                    <ul>
+                        <li><strong>Возраст:</strong> 27 лет</li>
+                        <li><strong>Профессия:</strong> Флорист, владелица "Букет Анны"</li>
+                        <li><strong>Хобби:</strong> Рисование акварелью, прогулки в ботаническом саду</li>
+                        <li><strong>Мечта:</strong> Создать сад мечты с розами</li>
+                    </ul>
+                </div>
+                <div class="how-we-met">
+                    <h3>Как мы встретились</h3>
+                    <p>В дождливый апрельский день в маленькой кофейне. Аня заказывала кофе, Иван рисовал эскиз. Он задел её зонтик, она пролила кофе на его чертеж... Так начался наш роман.</p>
+                    <p>Через год, среди оливковых рощ Тосканы, Иван предложил Ане руку и сердце на рассвете.</p>
+                </div>
+                <div class="groom">
+                    <h3>Иван</h3>
+                    <p class="quote">"Счастье — это когда тебя понимают"</p>
+                    <ul>
+                        <li><strong>Возраст:</strong> 29 лет</li>
+                        <li><strong>Профессия:</strong> Архитектор, реставратор</li>
+                        <li><strong>Хобби:</strong> Гитара, путешествия, винтажные карты</li>
+                        <li><strong>Мечта:</strong> Построить дом в прованском стиле</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Таймлайн -->
+        <section class="timeline">
+            <h2>Наш путь</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-date">Апрель 2021</div>
+                    <div class="timeline-content">
+                        <h3>Знакомство</h3>
+                        <p>Та самая кофейня и пролитый кофе</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Июнь 2021</div>
+                    <div class="timeline-content">
+                        <h3>Первое свидание</h3>
+                        <p>Выставка архитектуры и прогулка по ночному городу</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Май 2022</div>
+                    <div class="timeline-content">
+                        <h3>Путешествие в Италию</h3>
+                        <p>Тоскана, оливковые рощи и предложение</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Август 2024</div>
+                    <div class="timeline-content">
+                        <h3>Свадьба</h3>
+                        <p>Наш особенный день</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section class="contacts">
+            <h2>Подтвердите ваше присутствие</h2>
+            <p>До 1 августа 2024 года</p>
+            <div class="contact-methods">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>Анна: +7 (123) 456-78-90</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>Иван: +7 (987) 654-32-10</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>anna.ivan.wedding@example.com</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Карта -->
+        <section class="map">
+            <h2>Место проведения</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.3737899857536!2d37.61763331593095!3d55.75199998055146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5a738fa419%3A0x7c347d506f52311f!2z0JzQvtGB0LrQvtCy0YHQutC40Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXRgg!5e0!3m2!1sru!2sru!4v1620000000000!5m2!1sru!2sru" width="100%" height="450" style="border:0; filter: grayscale(100%);" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Add smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+            // Плавная прокрутка при клике на стрелку вниз
+            const scrollDown = document.querySelector('.scroll-down');
+            if (scrollDown) {
+                scrollDown.addEventListener('click', function() {
+                    window.scrollBy({
+                        top: window.innerHeight,
                         behavior: 'smooth'
                     });
                 });
+            }
+
+            // Анимация появления элементов при скролле
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.photo-item, .timeline-item, .contact-item');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            // Инициализация анимации
+            const animatedElements = document.querySelectorAll('.photo-item, .timeline-item, .contact-item');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Запустить при загрузке для видимых элементов
+
+            // Добавление реальных дат для таймлайна
+            const timelineDates = document.querySelectorAll('.timeline-date');
+            const realDates = [
+                '12 апреля 2021',
+                '5 июня 2021',
+                '20 мая 2022',
+                '15 августа 2024'
+            ];
+            
+            timelineDates.forEach((date, index) => {
+                date.textContent = realDates[index];
             });
         });
     </script>
